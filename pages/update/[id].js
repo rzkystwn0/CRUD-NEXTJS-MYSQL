@@ -1,6 +1,7 @@
 import Router from "next/router";
 import { useState } from "react";
 import Container from "../../components/Container";
+import { server } from "../config";
 
 export default function update(props) {
   const { data } = props;
@@ -20,7 +21,7 @@ export default function update(props) {
   const dataUp = {title, price}
 
   async function updateData(){
-      const update = await fetch('http://localhost:3000/api/update/' + data.id, {
+      const update = await fetch(`${server}/api/update/` + data.id, {
           method: "PUT",
           headers: {
               'Content-Type': "application/json"
@@ -52,7 +53,7 @@ export default function update(props) {
 export async function getServerSideProps(ctx) {
   const { id } = ctx.query;
 
-  const res = await fetch("http://localhost:3000/api/detail/" + id);
+  const res = await fetch(`${server}/api/detail/` + id);
 
   const data = await res.json();
 

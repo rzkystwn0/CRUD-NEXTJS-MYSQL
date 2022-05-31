@@ -1,6 +1,7 @@
 import Router from 'next/router';
 import React from 'react'
 import { useState } from 'react'
+import { server } from "../config";
 
 export default function add() {
     const [title, setTitle] = useState();
@@ -17,7 +18,7 @@ export default function add() {
     const dataAdd = {title, price}
 
     async function addData(){
-        const add = await fetch('http://localhost:3000/api/add', {
+        const add = await fetch(`${server}/api/add`, {
             method: "POST",
             headers:{
                 "Content-Type": "application/json"
