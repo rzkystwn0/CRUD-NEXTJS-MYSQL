@@ -3,7 +3,6 @@ import  Router  from "next/router";
 import { useState } from "react";
 import Container from "../components/Container";
 import TrBody from "../components/TrBody";
-import { server } from "../config";
 
 export default function Home(props) {
   const [data, setData] = useState(props.data);
@@ -69,9 +68,9 @@ export default function Home(props) {
 }
 
 export async function getServerSideProps(context) {
-  console.log(server)
+  console.log(process.env.URL)
 
-  const res = await fetch(`${server}/api`);
+  const res = await fetch(`${process.env.URL}/api`);
 
   const dataReq = await res.json();
 
