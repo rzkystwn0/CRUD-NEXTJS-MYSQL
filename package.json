@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "knex": "knex"
+    "knex": "knex",
+    "lint": "next lint"
   },
   "dependencies": {
     "axios": "^0.27.2",
