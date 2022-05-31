@@ -1,1 +1,5 @@
-export const server = process.env.API_LINK;
+const dev = process.env.NODE_ENV !== "production";
+
+console.log(dev);
+
+export const server = dev ? "http://localhost:3000" : "https://crud-nextjs-mysql.vercel.app";
