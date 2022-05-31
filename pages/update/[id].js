@@ -1,7 +1,7 @@
 import Router from "next/router";
 import { useState } from "react";
 import Container from "../../components/Container";
-import { server } from "../config";
+import { server } from "../../config";
 
 export default function update(props) {
   const { data } = props;
