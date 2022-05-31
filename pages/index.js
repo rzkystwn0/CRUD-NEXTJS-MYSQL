@@ -3,13 +3,13 @@ import  Router  from "next/router";
 import { useState } from "react";
 import Container from "../components/Container";
 import TrBody from "../components/TrBody";
-import { server } from "../config";
+import absoluteUrl from "next-absolute-url";
 
 export default function Home(props) {
   const [data, setData] = useState(props.data);
 
   async function deleteData(id) {
-    const del = await fetch(`${server}/api/delete/` + id, {
+    const del = await fetch("/api/delete/" + id, {
       method: "DELETE",
     });
 
@@ -21,7 +21,7 @@ export default function Home(props) {
   }
 
   function editData(id) {
-    Router.push(`${server}/update/` + id)
+    Router.push('/update/' + id)
   }
 
   
@@ -69,7 +69,8 @@ export default function Home(props) {
 }
 
 export async function getServerSideProps(context) {
-  const res = await fetch(`${server}/api`);
+
+  const res = await fetch("https://crud-nextjs-mysql.vercel.app/api");
 
   const dataReq = await res.json();
 
